@@ -29,15 +29,9 @@ void save(Imagen* img, const char* filename) {
 
 int main() {
     //Cargamos la imagen
-    Imagen* img = load("Pikachu.png");
+    Imagen* img = load("quilava.png");
 
-    //Modificamos un par de pixeles en el borde superior de la imagen como ejemplo
-    img->data[101] = 0;
-    img->data[102] = 0;
-    img->data[103] = 0;
-    img->data[104] = 0;
-    img->data[105] = 0;
-    img->data[106] = 0;
+   
 
     // Almacenamos el resultado
     save(img, "output.png");
