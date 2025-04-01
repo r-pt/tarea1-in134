@@ -73,13 +73,13 @@ void Atenuar(Imagen* img) {
 void ByN(Imagen* img) {
     int Tono; // variable para almacenar el tono
     cout << "Ingrese el tono (0-255): "; // pedimos el tono al usuario
-    cin >> Tono; // factor de atenuacion
+    cin >> Tono;
     for (int i = 0; i < img->width * img->height * img->channels; i += img->channels) { // recorremos cada pixel de la imagen
         unsigned char r = img->data[i]; // asignamos el canal rojo a una variable
         unsigned char g = img->data[i + 1]; // asignamos el canal verde a una variable
         unsigned char b = img->data[i + 2]; // asignamos el canal azul a una variable
         unsigned char gris = (r + g + b) / 3; // promedio de los tres canales
-        if (gris > Tono) { // si el promedio es mayor a 127, asignamos el valor 255
+        if (gris > Tono) { // si el promedio es mayor al tono, asignamos el valor 255
             gris = 255;
         } else { // si no, asignamos el valor 0
             gris = 0;

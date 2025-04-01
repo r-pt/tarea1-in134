@@ -4,3 +4,5 @@ Fuente: Scaler Topics. (s.f.). What is an unsigned char in C++?
 2. ¿Cuáles serían las diferencias entre usar unsigned int versus unsigned char? Responder cuantitativamente para una imagen RGB de dimensiones (N,N,3).
 El unsigned char usa menos espacio en la memoria (1 byte) pero solo son numeros entre el 0 y 255, mientras que el unsigned int usa más espacio en la memoria (4 bytes), para nuestro caso de imagenes de dimensiones (N,N,3) nos es conveniente el unsigned char pues no necesitamos un rango tan grande, seria desperdiciar espacio (x4 de lo que usariamos usando el estándar)
 Fuente: Microsoft Learn. (s.f.). Intervalos de tipo de datos.
+3. Usando este esquema de almacenamiento unidimensional: ¿Cuál sería el índice del primero pixel del canal azul?
+El primer indice de los pixeles azules seria 2 pues el arreglo es 0 y los pixeles siguen un patrón 
