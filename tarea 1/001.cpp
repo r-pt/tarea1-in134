@@ -82,7 +82,7 @@ int main() {
 
     //tmb hay que cambiar el pikachu.png x el quilava.png
 
-    Imagen* img1 = load("Pikachu.png");
+    Imagen* img1 = load("quilava.png");
 
     //hice otro puntero para guardar la que se giro
     //hay que hacer mas punteros para las op 3 y 4 creo
