@@ -90,21 +90,21 @@ void ByN(Imagen* img) {
         img->data[i + 2] = gris; // asignamos el nuevo valor al canal azul
     }
 }
-void to_ascii(Imagen* img) {
-    const char ascii_gradiante[] = " .'`^\",:;Il!i><~+_-?][}{1)(|tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
-    for (int i = 0; i < img->width * img->height * img->channels; i += img->channels) { // recorremos cada pixel de la imagen
-        unsigned char r = img->data[i]; // asignamos el canal rojo a una variable
-        unsigned char g = img->data[i + 1]; // asignamos el canal verde a una variable
-        unsigned char b = img->data[i + 2]; // asignamos el canal azul a una variable
-        unsigned char gris = (r + g + b) / 3; // promedio de los tres canales
-        // Asignamos el nuevo valor a los tres canales
-        img->data[i] = gris; // asignamos el nuevo valor al canal rojo
-        img->data[i + 1] = gris; // asignamos el nuevo valor al canal verde
-        img->data[i + 2] = gris; // asignamos el nuevo valor al canal azul
-    
-    
+    void to_ascii(Imagen* img) {
+        const char ascii_gradiante[] = " .'`^\",:;Il!i><~+_-?][}{1)(|tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+        for (int i = 0; i < img->width * img->height * img->channels; i += img->channels) { // recorremos cada pixel de la imagen
+            unsigned char r = img->data[i]; // asignamos el canal rojo a una variable
+            unsigned char g = img->data[i + 1]; // asignamos el canal verde a una variable
+            unsigned char b = img->data[i + 2]; // asignamos el canal azul a una variable
+            unsigned char gris = (r + g + b) / 3; // promedio de los tres canales
+            // Asignamos el nuevo valor a los tres canales
+            img->data[i] = gris; // asignamos el nuevo valor al canal rojo
+            img->data[i + 1] = gris; // asignamos el nuevo valor al canal verde
+            img->data[i + 2] = gris; // asignamos el nuevo valor al canal azul
+        
+        
+        }
     }
-}
 int main() {
     //Cargamos la imagen
     Imagen* img = load("quilava.png");

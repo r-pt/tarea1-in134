@@ -1,8 +1,43 @@
 1. ¿Por qué si los pixeles de la imagen son números enteros ∈ [0, 255], utilizamos el tipo de dato unsigned char?
 Porque con el unsigned char es posible asignar los valores e 0 al 255 con poca memoria, entonces es conveniente en casos como estos necesitan un rango "pequeño"
-Fuente: Scaler Topics. (s.f.). What is an unsigned char in C++?
+Fuente: Scaler Topics. (s.f.). What is an unsigned char in C++?.
 2. ¿Cuáles serían las diferencias entre usar unsigned int versus unsigned char? Responder cuantitativamente para una imagen RGB de dimensiones (N,N,3).
 El unsigned char usa menos espacio en la memoria (1 byte) pero solo son numeros entre el 0 y 255, mientras que el unsigned int usa más espacio en la memoria (4 bytes), para nuestro caso de imagenes de dimensiones (N,N,3) nos es conveniente el unsigned char pues no necesitamos un rango tan grande, seria desperdiciar espacio (x4 de lo que usariamos usando el estándar)
 Fuente: Microsoft Learn. (s.f.). Intervalos de tipo de datos.
 3. Usando este esquema de almacenamiento unidimensional: ¿Cuál sería el índice del primero pixel del canal azul?
-El primer indice de los pixeles azules seria 2 pues el arreglo es 0 y los pixeles siguen un patrón 
+El primer indice de los pixeles azules seria 2 pues el arreglo parte en la posición 0 y los pixeles siguen un patrón de tal modo que R(Rojo) sea el primero, G(Verde) el segundo y B(Azul) el tercero del triplete.
+Fuente: W3 Schools. (s.f.). C++ Arrays.
+4. ¿Cómo podemos convertir una imagen RGB a escala de grises?
+Cambiando el valor de sus pixeles, ya sea considerando la luminosidad y la percepción que tenemos a los colores, o simplemente sacando el promedio de los valores y reemplazarlos de modo que tanto rojo, verde y azul
+Fuente; PTC. (s.f.). Grayscale and Color in Images.
+6.
+Lo que pasa es que en vez de revisar y cambiar el valores del pixel por triplete, lo ve por cada valor de forma individual, en vez de comprobar por el promedio del rojo verde azul es mayor que el umbral -> negro, si no blanco revisa uno a uno es comprueba si el rojo es mayor al umbral, y asi con el verde y azul, este seria el codigo que utilizo 
+void ByN(Imagen* img) {
+    int Tono; // variable para almacenar el tono
+    cout << "Ingrese el tono (0-255): "; // pedimos el tono al usuario
+    cin >> Tono;
+    for (int i = 0; i < img->width * img->height * img->channels; i += img->channels) { // recorremos cada pixel de la imagen
+        unsigned char r = img->data[i]; // asignamos el canal rojo a una variable
+        unsigned char g = img->data[i + 1]; // asignamos el canal verde a una variable
+        unsigned char b = img->data[i + 2]; // asignamos el canal azul a una variable
+        if (r > Tono){
+            r = 255; // si el canal rojo es mayor que el tono, lo asignamos a 255
+        } else {
+            r = 0; // si no, lo asignamos a 0
+        }
+        if (g > Tono){
+            g = 255; // si el canal verde es mayor que el tono, lo asignamos a 255
+        } else {
+            g = 0; // si no, lo asignamos a 0
+        }
+        if (b > Tono){
+            b = 255; // si el canal azul es mayor que el tono, lo asignamos a 255
+        } else {
+            b = 0; // si no, lo asignamos a 0
+        }
+        // Asignamos el nuevo valor a los tres canales
+        img->data[i] = r; // asignamos el nuevo valor al canal rojo
+        img->data[i + 1] = g; // asignamos el nuevo valor al canal verde
+        img->data[i + 2] = b; // asignamos el nuevo valor al canal azul
+    }
+}
